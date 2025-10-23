@@ -8,19 +8,19 @@ import { ReservationService } from '../reservation/reservation-service';
   templateUrl: './reservation-list.html',
   styleUrl: './reservation-list.css'
 })
-export class ReservationList implements OnInit{
-   reservations: Reservation[] = [];
+export class ReservationList implements OnInit {
+  reservations: Reservation[] = [];
 
-   constructor(private reservationService : ReservationService){}
- 
+  constructor(private reservationService: ReservationService) { }
 
- ngOnInit(): void {
-   this.reservationService.getReservations().subscribe(reservations =>{this.reservations = reservations});
- }
 
-deleteReservation(id : string): void{
-this.reservationService.deleteReservation(id);
-}
+  ngOnInit(): void {
+    this.reservationService.getReservations().subscribe(reservations => { this.reservations = reservations });
+  }
+
+  deleteReservation(id: string): void {
+    this.reservationService.deleteReservation(id).subscribe(() => { console.log("Reservation delete has been submitted") });
+  }
 
 
 }
