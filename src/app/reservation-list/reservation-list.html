@@ -1,0 +1,20 @@
+<app-home-component></app-home-component>
+
+@if (reservations.length) {
+<ul>
+    @for (reservation of reservations; track reservation) {
+    <li>
+        Check-in Date: {{reservation.checkInDate}}<br>
+        Check-out Date:{{reservation.checkOutDate}}<br>
+        Guest Email: {{reservation.guestEmail}}<br>
+        Fuest Name: {{reservation.guestName}}<br>
+        Room Number: {{reservation.roomNumber}}<br>
+        <button type="submit" (click)="deleteReservation(reservation.id)">Delete</button>
+        <button [routerLink]="['/edit', reservation.id]">Edit</button>
+    </li>
+    }
+
+</ul>
+} @else {
+    <p>No reservation Available.</p>
+}
